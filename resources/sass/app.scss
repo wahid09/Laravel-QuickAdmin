@@ -1,8 +1,20 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+//DataTable style
 
-// Variables
-@import 'variables';
+.dataTables_wrapper .dataTables_length {
+    padding-top: 1rem;
+    padding-left: 1rem;
+}
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+.dataTables_wrapper .dataTables_filter {
+    padding-top: 1rem;
+    padding-right: 1rem;
+}
+
+.dataTables_wrapper .dataTables_info {
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+}
+
+.dataTables_wrapper .dataTables_paginate {
+    padding-right: 1rem;
+}
