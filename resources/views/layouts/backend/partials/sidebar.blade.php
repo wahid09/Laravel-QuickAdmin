@@ -30,105 +30,87 @@
             </span>
         </div>    
     <div class="scrollbar-sidebar">
-        <div class="app-sidebar__inner">
-            <ul class="vertical-nav-menu">
-                <li class="app-sidebar__heading">Dashboards</li>
-                <li><a href="{{ route('app.dashboard') }}" class="{{ Route::is('app.dashboard') ? 'mm-active' : ''}}">
-                <i class="metismenu-icon pe-7s-rocket"></i>Dashboard
-                </a>
-                </li>
-            </ul>
-            <ul class="vertical-nav-menu">
-                <li class="app-sidebar__heading">Access Control</li>
-                @permission('role-index')
-                <li>
-                <a href="{{ route('app.roles.index') }}" class="{{ Request::is('app/roles*') ? 'mm-active' : ''}}">
-                <i class="metismenu-icon pe-7s-check"></i>Role Management
-                </a>
-                </li>
-                @endpermission
-
-                <li>
-                <a href="{{ route('app.permissions.index') }}" class="{{ Request::is('app/permissions*') ? 'mm-active' : ''}}">
-                <i class="metismenu-icon pe-7s-cloud"></i>Permissions
-                </a>
-                </li>
-
-                <li>
-                <a href="{{ route('app.modules.index') }}" class="{{ Request::is('app/modules*') ? 'mm-active' : ''}}">
-                <i class="metismenu-icon pe-7s-cloud"></i>Modules
-                </a>
-                </li>
-
-                @permission('user-index')
-                <li>
-                <a href="{{ route('app.users.index') }}" class="{{ Request::is('app/users*') ? 'mm-active' : ''}}">
-                <i class="metismenu-icon pe-7s-users"></i>User Management
-                </a>
-                </li>
-                @endpermission
-                </ul>
-
-                <ul class="vertical-nav-menu">
-                <li class="app-sidebar__heading">System</li>
-                @permission('backup-index')
-                <li>
-                <a href="{{ route('app.backups.index') }}" class="{{ Request::is('app/backups*') ? 'mm-active' : ''}}">
-                <i class="metismenu-icon pe-7s-cloud"></i>Backups
-                </a>
-                </li>
-                @endpermission
-                
-                </ul>
-                <!-- Example -->
-                <div class="app-sidebar__inner">
-                    <ul class="vertical-nav-menu">
-                        <li class="app-sidebar__heading">UI Components</li>
-                        <li>
-                        <a href="#"><i class="metismenu-icon pe-7s-diamond"></i>Elements<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                        </a>
-                        <ul>
-                            <li>
-                            <a href="elements-buttons-standard.html">
-                            <i class="metismenu-icon"></i>
-                                                    Buttons
-                            </a>
-                            </li>
-                            <li>
-                            <a href="elements-dropdowns.html">
-                            <i class="metismenu-icon"></i>Dropdowns
-                            </a>
-                            </li>
-                            <li>
-                            <a href="elements-icons.html"><i class="metismenu-icon"></i>Icons
-                            </a>
-                            </li>
-                            <li><a href="elements-badges-labels.html"><i class="metismenu-icon"></i>Badges </a>
-                            </li>
-                            <li>
-                            <a href="elements-cards.html">
-                            <i class="metismenu-icon"></i>Cards
-                            </a>
-                            </li>
-                            <li>
-                            <a href="elements-list-group.html">
-                            <i class="metismenu-icon"></i>List Groups</a>
-                            </li>
-                            <li>
-                            <a href="elements-navigation.html">
-                            <i class="metismenu-icon">
-                            </i>Navigation Menus </a>
-                            </li>
-                            <li>
-                            <a href="elements-utilities.html">
-                            <i class="metismenu-icon"></i>Utilities
-                            </a>
-                            </li>
-                        </ul>
+        <!-- Dropdown list-->
+        <ul class="vertical-nav-menu">
+            <br>
+            <li class="app-sidebar__heading"><a href="{{ route('app.dashboard') }}" class="{{ Route::is('app.dashboard') ? 'mm-active' : ''}}"><i class="metismenu-icon pe-7s-rocket"></i>Dashboard
+            </a>
+            </li>
+            <li class="app-sidebar__heading customLiClass">
+              <a href="#"><i class="metismenu-icon pe-7s-diamond"></i>Access Control<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+              </a>
+                <ul>
+                    @permission('role-index')
+                    <li>
+                    <a href="{{ route('app.roles.index') }}" class="{{ Request::is('app/roles*') ? 'mm-active' : ''}}">
+                    <i class="metismenu-icon pe-7s-check"></i>Role Management
+                    </a>
                     </li>
+                    @endpermission
+                    @permission('permission-access')
+                    <li>
+                    <a href="{{ route('app.permissions.index') }}" class="{{ Request::is('app/permissions*') ? 'mm-active' : ''}}">
+                    <i class="metismenu-icon pe-7s-cloud"></i>Permissions
+                    </a>
+                    </li>
+                    @endpermission
+                    
+                    @permission('module-access')
+                    <li>
+                    <a href="{{ route('app.modules.index') }}" class="{{ Request::is('app/modules*') ? 'mm-active' : ''}}">
+                    <i class="metismenu-icon pe-7s-cloud"></i>Modules
+                    </a>
+                    </li>
+                    @endpermission
+
+                    @permission('user-index')
+                    <li>
+                    <a href="{{ route('app.users.index') }}" class="{{ Request::is('app/users*') ? 'mm-active' : ''}}">
+                    <i class="metismenu-icon pe-7s-users"></i>User Management
+                    </a>
+                    </li>
+                    @endpermission
+                                    
                 </ul>
-            </div>
-                            <!-- End Example -->
-        </div>
+            </li>
+
+            <li class="app-sidebar__heading customLiClass">
+              <a href="#"><i class="metismenu-icon pe-7s-diamond"></i>System<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+              </a>
+                <ul>
+                    @permission('backup-index')
+                    <li>
+                    <a href="{{ route('app.backups.index') }}" class="{{ Request::is('app/backups*') ? 'mm-active' : ''}}">
+                    <i class="metismenu-icon pe-7s-cloud"></i>Backups
+                    </a>
+                    </li>
+                    @endpermission
+                </ul>
+            </li>
+
+        </ul>
+        <!-- End Dropdown-->   
     </div>
 </div>
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+      var url = window.location.href;
+
+      var encodedString = btoa(url);
+      encodedString=encodedString.replace("==","");
+      encodedString=encodedString.replace("=","");
+
+      $activeUrl=$("#"+encodedString);
+      //alert($activeUrl);
+      $activeUrl.addClass("mm-active");
+
+      $activeLi=$activeUrl.parents("li.customLiClass:first");
+      $activeLi.addClass("mm-active");
+    });
+
+</script>
