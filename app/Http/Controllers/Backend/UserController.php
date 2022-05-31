@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\UserRequest;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -41,17 +42,9 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         Gate::authorize('user-create');
-        $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'name_bn' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'role' => 'required',
-            'password' => 'required|confirmed|string|min:8',
-            'avatar' => 'required|image',
-        ]);
 
         $user = User::create([
             'role_id' => $request->role,
@@ -62,7 +55,7 @@ class UserController extends Controller
             'status' => $request->filled('status')
         ]);
 
-        notify()->success("User Added", "Success");
+        toast('User Added successfully!', 'success');
 
         return redirect()->route('app.users.index');
     }
@@ -98,17 +91,9 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
         Gate::authorize('user-update');
-        $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'name_bn' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
-            'role' => 'required',
-            'password' => 'nullable|confirmed|string|min:8',
-            'avatar' => 'nullable|image',
-        ]);
 
         $user->update([
             'role_id' => $request->role,
@@ -118,8 +103,9 @@ class UserController extends Controller
             'password' => isset($request->password) ? Hash::make($request->password) : $user->password,
             'status' => $request->filled('status')
         ]);
-        notify()->success("User Updated", "Success");
-        return back();
+
+        toast('User Updated successfully!', 'success');
+        return redirect()->route('app.users.index');
     }
 
     /**
@@ -132,7 +118,8 @@ class UserController extends Controller
     {
         Gate::authorize('user-delete');
         $user->delete();
-        notify()->success("User Deleted", "Success");
-        return back();
+
+        toast('User Deleted successfully!', 'success');
+        return redirect()->route('app.users.index');
     }
 }

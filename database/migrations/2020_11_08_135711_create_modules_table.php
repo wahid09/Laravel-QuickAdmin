@@ -18,6 +18,7 @@ class CreateModulesTable extends Migration
             $table->string('name')->unique();
             $table->string('name_bn')->unique();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -28,6 +29,8 @@ class CreateModulesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('modules');
+        Schema::table('modules', function (Blueprint $table) {
+        $table->dropSoftDeletes();
+    });
     }
 }

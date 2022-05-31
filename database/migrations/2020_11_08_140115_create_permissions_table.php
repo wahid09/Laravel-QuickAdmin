@@ -21,6 +21,7 @@ class CreatePermissionsTable extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -31,6 +32,8 @@ class CreatePermissionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('permissions');
+        Schema::table('permissions', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }

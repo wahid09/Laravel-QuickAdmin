@@ -21,6 +21,7 @@ class CreateRolesTable extends Migration
             $table->string('description')->nullable();
             $table->boolean('deletable')->default(true);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -31,6 +32,8 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::table('roles', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }
