@@ -20,6 +20,7 @@ class CreatePermissionsTable extends Migration
                 ->onDelete('cascade');
             $table->string('name');
             $table->string('slug')->unique();
+            $table->tinyInteger('is_active')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

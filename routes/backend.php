@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\ModuleController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\PermissionController;
+use App\Http\Controllers\Backend\BookController;
 
 
 

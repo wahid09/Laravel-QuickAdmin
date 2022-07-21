@@ -20,6 +20,7 @@ class CreateRolesTable extends Migration
             $table->string('slug')->unique();
             $table->string('description')->nullable();
             $table->boolean('deletable')->default(true);
+            $table->tinyInteger('is_active')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

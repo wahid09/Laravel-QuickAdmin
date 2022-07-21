@@ -44,4 +44,8 @@ class User extends Authenticatable
     {
         return $this->role->permissions()->where('slug', $permission)->first() ? true : false;
     }
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
+    }
 }

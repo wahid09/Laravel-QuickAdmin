@@ -15,11 +15,11 @@
         <a href="{{ route('app.modules.index') }}" class="btn-shadow mr-3 btn btn-warning" name="button">
          <i class="fas fa-arrow-left"></i>&nbsp;Back to list
         </a>
-     </div>    
+     </div>
     </div>
     </div>
-                        
-                        
+
+
     <div class="row">
         <div class="col-12">
             <form action="{{ isset($module) ? route('app.modules.update', $module->id) : route('app.modules.store') }}" method="POST" enctype="multipart/form-data">
@@ -29,8 +29,8 @@
                 @endisset
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="main-card mb-3 card">                  
-                
+                        <div class="main-card mb-3 card">
+
                             <div class="card-body">
                                 <h5 class="card-title">Manage Module</h5>
 
@@ -62,18 +62,18 @@
                                 @else
                                 <i class="fas fa-plus-circle"></i>&nbsp;Create</button>
                                 @endisset
-                                
-                                
+
+
                             </div>
-                                            
+
                         </div>
                     </div>
-                    
+
                 </div>
-           </form> 
+           </form>
         </div>
     </div>
-                        
+
 @endsection
 @push('js')
 

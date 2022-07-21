@@ -100,5 +100,31 @@ class PermissionSeeder extends Seeder
             'name' => 'Delete Backup',
             'slug' => 'backup-delete'
         ]);
+
+        //Module
+        $moduleBackup = Module::updateOrCreate([
+            'name' => 'Modules',
+            'name_bn' => 'মডিউল'
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleBackup->id,
+            'name' => 'Access Module',
+            'slug' => 'module-index'
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleBackup->id,
+            'name' => 'Create Module',
+            'slug' => 'module-create'
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleBackup->id,
+            'name' => 'Update Module',
+            'slug' => 'module-download'
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleBackup->id,
+            'name' => 'Delete Module',
+            'slug' => 'module-delete'
+        ]);
     }
 }

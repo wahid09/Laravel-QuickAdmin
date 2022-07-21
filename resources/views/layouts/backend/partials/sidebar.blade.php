@@ -38,7 +38,7 @@
                 </span>
             </button>
             </span>
-        </div>    
+        </div>
     <div class="scrollbar-sidebar">
         <!-- Dropdown list-->
         <ul class="vertical-nav-menu">
@@ -50,25 +50,24 @@
               <a href="#"><i class="metismenu-icon pe-7s-settings"></i>Access Control<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
               </a>
                 <ul>
+                    @permission('module-index')
+                    <li class="{{Request::is('app/modules*') ? 'mm-active' : ''}}">
+                    <a href="{{ route('app.modules.index') }}">
+                    <i class="metismenu-icon pe-7s-cloud"></i>Module
+                    </a>
+                    </li>
+                    @endpermission
                     @permission('role-index')
                     <li class="{{Request::is('app/roles*') ? 'mm-active' : ''}}">
                     <a href="{{ route('app.roles.index') }}">
-                    <i class="metismenu-icon pe-7s-check"></i>Role Management
+                    <i class="metismenu-icon pe-7s-check"></i>Roles
                     </a>
                     </li>
                     @endpermission
-                    @permission('permission-access')
+                    @permission('permission-index')
                     <li class="{{ Request::is('app/permissions*') ? 'mm-active' : ''}}">
                     <a href="{{ route('app.permissions.index') }}">
                     <i class="metismenu-icon pe-7s-cloud"></i>Permissions
-                    </a>
-                    </li>
-                    @endpermission
-                    
-                    @permission('module-access')
-                    <li class="{{ Request::is('app/modules*') ? 'mm-active' : ''}}">
-                    <a href="{{ route('app.modules.index') }}">
-                    <i class="metismenu-icon pe-7s-cloud"></i>Modules
                     </a>
                     </li>
                     @endpermission
@@ -76,11 +75,11 @@
                     @permission('user-index')
                     <li class="{{ Request::is('app/users*') ? 'mm-active' : ''}}">
                     <a href="{{ route('app.users.index') }}">
-                    <i class="metismenu-icon pe-7s-users"></i>User Management
+                    <i class="metismenu-icon pe-7s-users"></i>Users
                     </a>
                     </li>
                     @endpermission
-                                    
+
                 </ul>
             </li>
 
@@ -102,7 +101,7 @@
               <a href="#"><i class="metismenu-icon pe-7s-tools"></i>Application Setup<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
               </a>
                 <ul>
-                    
+
                     <li>
                     <a href="" class="">
                     <i class="metismenu-icon pe-7s-cloud"></i>Page
@@ -112,7 +111,7 @@
             </li>
 
         </ul>
-        <!-- End Dropdown-->   
+        <!-- End Dropdown-->
     </div>
     <!-- Example -->
     <!-- End -->

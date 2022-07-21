@@ -54,10 +54,17 @@
                         class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                 </a>
                 <ul>
+                    <?php if (\Illuminate\Support\Facades\Blade::check('permission', 'module-index')): ?>
+                    <li class="<?php echo e(Request::is('app/modules*') ? 'mm-active' : ''); ?>">
+                    <a href="<?php echo e(route('app.modules.index')); ?>">
+                    <i class="metismenu-icon pe-7s-cloud"></i>Module
+                    </a>
+                    </li>
+                    <?php endif; ?>
                     <?php if (\Illuminate\Support\Facades\Blade::check('permission', 'role-index')): ?>
                     <li class="<?php echo e(Request::is('app/roles*') ? 'mm-active' : ''); ?>">
                         <a href="<?php echo e(route('app.roles.index')); ?>">
-                            <i class="metismenu-icon pe-7s-check"></i>Role Management
+                            <i class="metismenu-icon pe-7s-check"></i>Roles
                         </a>
                     </li>
                     <?php endif; ?>
@@ -69,18 +76,10 @@
                     </li>
                     <?php endif; ?>
 
-                    <?php if (\Illuminate\Support\Facades\Blade::check('permission', 'module-access')): ?>
-                    <li class="<?php echo e(Request::is('app/modules*') ? 'mm-active' : ''); ?>">
-                        <a href="<?php echo e(route('app.modules.index')); ?>">
-                            <i class="metismenu-icon pe-7s-cloud"></i>Modules
-                        </a>
-                    </li>
-                    <?php endif; ?>
-
                     <?php if (\Illuminate\Support\Facades\Blade::check('permission', 'user-index')): ?>
                     <li class="<?php echo e(Request::is('app/users*') ? 'mm-active' : ''); ?>">
                         <a href="<?php echo e(route('app.users.index')); ?>">
-                            <i class="metismenu-icon pe-7s-users"></i>User Management
+                            <i class="metismenu-icon pe-7s-users"></i>Users
                         </a>
                     </li>
                     <?php endif; ?>
