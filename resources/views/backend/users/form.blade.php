@@ -141,8 +141,8 @@
                                 <div class="form-group">
                                     <label for="avatar">Avatar</label>
                                     <input id="avatar" type="file"
-                                           class="dropify form-control @error('avatar') is-invalid @enderror"
-                                           name="avatar">
+                                           class="dropify form-control @error('image') is-invalid @enderror"
+                                           name="image" @isset($user) data-default-file="{{asset('storage/user/'. $user->image)}}" @endisset>
 
                                     @error('avatar')
                                     <span class="text-danger" role="alert">

@@ -10,6 +10,7 @@ use App\Repository\Permission\PermissionRepositoryInterface;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class PermissionController extends Controller
 {
