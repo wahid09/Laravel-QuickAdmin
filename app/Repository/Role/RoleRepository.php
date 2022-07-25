@@ -6,7 +6,7 @@ namespace App\Repository\Role;
 
 use App\Models\Role;
 
-class RoleRepository
+class RoleRepository implements RoleRepositoryInterface
 {
     public function index(){
         return Role::active()->with('permissions')->get();

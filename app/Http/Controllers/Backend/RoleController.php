@@ -7,6 +7,7 @@ use App\Models\Role;
 use App\Models\Module;
 use App\Repository\ModuleRepositoryInterface;
 use App\Repository\Role\RoleRepository;
+use App\Repository\Role\RoleRepositoryInterface;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -17,7 +18,7 @@ class RoleController extends Controller
     private $roleRepository;
     private $moduleRepository;
 
-    public function __construct(RoleRepository $roleRepository, ModuleRepositoryInterface $moduleRepository)
+    public function __construct(RoleRepositoryInterface $roleRepository, ModuleRepositoryInterface $moduleRepository)
     {
         $this->roleRepository = $roleRepository;
         $this->moduleRepository = $moduleRepository;
