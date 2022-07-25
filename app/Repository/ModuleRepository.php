@@ -14,6 +14,7 @@ class ModuleRepository implements ModuleRepositoryInterface
         });
     }
 
+
     public function show($module){
         return [
             'id' => $module->id,
@@ -33,6 +34,9 @@ class ModuleRepository implements ModuleRepositoryInterface
     }
     public function delete($module){
         return $module->delete();
+    }
+    public function moduleWithPermission(){
+        return Module::with('permissions')->get();
     }
 
 }

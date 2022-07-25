@@ -22,11 +22,11 @@
         <a href="{{ route('app.permissions.index') }}" class="btn-shadow mr-3 btn btn-warning" name="button">
          <i class="fas fa-arrow-left"></i>&nbsp;Back to list
         </a>
-     </div>    
+     </div>
     </div>
     </div>
-                        
-                        
+
+
     <div class="row">
         <div class="col-12">
             <form action="{{ isset($permission) ? route('app.permissions.update', $permission->id) : route('app.permissions.store') }}" method="POST" enctype="multipart/form-data">
@@ -36,8 +36,8 @@
                 @endisset
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="main-card mb-3 card">                  
-                
+                        <div class="main-card mb-3 card">
+
                             <div class="card-body">
                                 <h5 class="card-title">Manage Permission</h5>
 
@@ -45,8 +45,8 @@
                                     <label for="module">Module</label>
                                     <select id="module" class="form-control @error('module') is-invalid @enderror roleSelect" name="module" required autofocus>
                                         @foreach ($modules as $module)
-                                         <option value="{{ $module->id}}" @isset($permission){{($permission->module->id == $module->id) ? 'selected' : ''}}@endisset
-                                            >{{ $module->name}}</option>
+                                         <option value="{{ $module['id']}}" @isset($permission){{($permission->module->id == $module['id']) ? 'selected' : ''}}@endisset
+                                            >{{ $module['name']}}</option>
                                         @endforeach
                                     </select>
                                     @error('module')
@@ -73,18 +73,18 @@
                                 @else
                                 <i class="fas fa-plus-circle"></i>&nbsp;Create</button>
                                 @endisset
-                                
-                                
+
+
                             </div>
-                                            
+
                         </div>
                     </div>
-                    
+
                 </div>
-           </form> 
+           </form>
         </div>
     </div>
-                        
+
 @endsection
 @push('js')
 <script src="{{asset('assets/select/select2.min.js')}}"></script>

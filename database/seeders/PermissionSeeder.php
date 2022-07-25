@@ -126,5 +126,31 @@ class PermissionSeeder extends Seeder
             'name' => 'Delete Module',
             'slug' => 'module-delete'
         ]);
+
+        //Permission
+        $moduleBackup = Module::updateOrCreate([
+            'name' => 'Permissions',
+            'name_bn' => 'পার্মিশন্স'
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleBackup->id,
+            'name' => 'Access Permission',
+            'slug' => 'permission-index'
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleBackup->id,
+            'name' => 'Create Permission',
+            'slug' => 'permission-create'
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleBackup->id,
+            'name' => 'Update Permission',
+            'slug' => 'permission-download'
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleBackup->id,
+            'name' => 'Delete Permission',
+            'slug' => 'permission-delete'
+        ]);
     }
 }

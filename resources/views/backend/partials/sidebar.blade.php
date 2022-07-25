@@ -61,6 +61,14 @@
                     </a>
                     </li>
                     @endpermission
+
+                    @permission('permission-index')
+                    <li class="{{ Request::is('app/permissions*') ? 'mm-active' : ''}}">
+                        <a href="{{ route('app.permissions.index') }}">
+                            <i class="metismenu-icon pe-7s-cloud"></i>Permissions
+                        </a>
+                    </li>
+                    @endpermission
                     @permission('role-index')
                     <li class="{{Request::is('app/roles*') ? 'mm-active' : ''}}">
                         <a href="{{ route('app.roles.index') }}">

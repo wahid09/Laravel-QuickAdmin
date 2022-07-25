@@ -61,6 +61,14 @@
                     </a>
                     </li>
                     <?php endif; ?>
+
+                    <?php if (\Illuminate\Support\Facades\Blade::check('permission', 'permission-index')): ?>
+                    <li class="<?php echo e(Request::is('app/permissions*') ? 'mm-active' : ''); ?>">
+                        <a href="<?php echo e(route('app.permissions.index')); ?>">
+                            <i class="metismenu-icon pe-7s-cloud"></i>Permissions
+                        </a>
+                    </li>
+                    <?php endif; ?>
                     <?php if (\Illuminate\Support\Facades\Blade::check('permission', 'role-index')): ?>
                     <li class="<?php echo e(Request::is('app/roles*') ? 'mm-active' : ''); ?>">
                         <a href="<?php echo e(route('app.roles.index')); ?>">

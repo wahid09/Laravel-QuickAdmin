@@ -7,6 +7,7 @@ use App\Http\Requests\ModuleRequest;
 use App\Models\Module;
 use App\Repository\ModuleRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ModuleController extends Controller
 {

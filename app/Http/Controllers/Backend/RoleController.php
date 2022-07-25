@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\RoleRequest;
 use App\Models\Role;
 use App\Models\Module;
+use App\Repository\ModuleRepositoryInterface;
+use App\Repository\Role\RoleRepository;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,6 +14,15 @@ use Illuminate\Support\Facades\Gate;
 
 class RoleController extends Controller
 {
+    private $roleRepository;
+    private $moduleRepository;
+
+    public function __construct(RoleRepository $roleRepository, ModuleRepositoryInterface $moduleRepository)
+    {
+        $this->roleRepository = $roleRepository;
+        $this->moduleRepository = $moduleRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +31,7 @@ class RoleController extends Controller
     public function index()
     {
         Gate::authorize('role-index');
-        $roles = Role::with('permissions')->get();
+        $roles = $this->roleRepository->index();
         return view('backend.roles.index', compact('roles'));
     }
 
@@ -31,40 +43,41 @@ class RoleController extends Controller
     public function create()
     {
         Gate::authorize('role-create');
-        $modules = Module::all();
+        $modules = $this->moduleRepository->moduleWithPermission();
         return view('backend.roles.form', compact('modules'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoleRequest $request)
     {
         Gate::authorize('role-create');
-        $this->validate($request, [
-            'name' => 'required|unique:roles',
-            'name_bn' => 'required|unique:roles',
-            'permissions' => 'required|array',
-            'permissions.*' => 'integer'
 
-        ]);
+//        Role::create([
+//            'name' => $request->name,
+//            'name_bn' => $request->name_bn,
+//            'slug' => Str::slug($request->name),
+//        ])->permissions()->sync($request->input('permissions'), []);
 
-        Role::create([
+        $data = [
             'name' => $request->name,
             'name_bn' => $request->name_bn,
             'slug' => Str::slug($request->name),
-        ])->permissions()->sync($request->input('permissions'), []);
-        notify()->success("Role Added", "Success");
+        ];
+
+        $role = $this->roleRepository->create($data)->permissions()->sync($request->input('permissions'), []);
+        toast('Role Added', 'success');
         return redirect()->route('app.roles.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -75,24 +88,29 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(Role $role)
     {
         Gate::authorize('role-update');
-        $modules = Module::all();
+        $modules = $this->moduleRepository->moduleWithPermission();
         return view('backend.roles.form', compact('modules', 'role'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function pr($data){
+        echo "<pre>";
+        print_r($data);
+        exit();
+    }
+    public function update(RoleRequest $request, Role $role)
     {
         Gate::authorize('role-update');
         $role->update([
@@ -101,25 +119,37 @@ class RoleController extends Controller
             'slug' => Str::slug($request->name),
         ]);
 
+
+//        $data = [
+//            'name' => $request->name,
+//            'name_bn' => $request->name_bn,
+//            'slug' => Str::slug($request->name),
+//        ];
+//
+//        $role = $this->roleRepository->update($role, $data);
+        //$this->pr($role);
+//        if($role){
+//            $role->permissions()->sync($request->input('permissions'));
+//        }
         $role->permissions()->sync($request->input('permissions'));
-        notify()->success("Role Updated", "Success");
+        toast('Role Updated', 'success');
         return redirect()->route('app.roles.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Role $role)
     {
         Gate::authorize('role-delete');
         if ($role->deletable) {
-            $role->delete();
-            notify()->success("Role Deleted", "Success");
+            $this->roleRepository->delete($role);
+            toast('Role Deleted', 'success');
         } else {
-            notify()->error("You can\'t delete system role", "Error");
+            toast('You can\'t delete system role', 'error');
         }
         return back();
     }

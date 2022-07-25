@@ -2,14 +2,24 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\PermissionRequest;
 use App\Models\Module;
 use App\Models\Permission;
+use App\Repository\Permission\PermissionRepository;
+use App\Repository\Permission\PermissionRepositoryInterface;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class PermissionController extends Controller
 {
+    private $permissionRepository;
+
+    public function __construct(PermissionRepositoryInterface $permissionRepository)
+    {
+        $this->permissionRepository = $permissionRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +27,8 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        $permissions = Permission::all();
+        Gate::authorize('permission-index');
+        $permissions = $this->permissionRepository->index();
         return view('backend.permissions.index', compact('permissions'));
     }
 
@@ -28,38 +39,38 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        $modules = Module::all();
+        Gate::authorize('permission-create');
+        $modules = $this->permissionRepository->allName();
         return view('backend.permissions.form', compact('modules'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PermissionRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required|string',
-            'module' => 'required'
-        ]);
+        Gate::authorize('permission-create');
 
-        $permission = Permission::create([
+        $data = [
             'module_id' => $request->module,
             'name' => $request->name,
             'slug' => Str::slug($request->name),
-        ]);
-        notify()->success("Permission Added", "Success");
+        ];
 
-        //return redirect()->route('app.permissions.index');
-        return back();
+        $permission = $this->permissionRepository->create($data);
+
+        toast('Permission Added', 'success');
+
+        return redirect()->route('app.permissions.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show(Permission $permission)
@@ -70,49 +81,50 @@ class PermissionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(Permission $permission)
     {
-        $modules = Module::all();
+        Gate::authorize('permission-update');
+        $modules = $this->permissionRepository->allName();
         return view('backend.permissions.form', compact('modules', 'permission'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Permission $permission)
+    public function update(PermissionRequest $request, Permission $permission)
     {
-        $this->validate($request, [
-            'name' => 'required|string',
-            'module' => 'required'
-        ]);
+        Gate::authorize('permission-update');
 
-        $permission->update([
+        $data = [
             'module_id' => $request->module,
             'name' => $request->name,
             'slug' => Str::slug($request->name),
-        ]);
+        ];
 
-        notify()->success("Permission Updated", "Success");
-        return back();
+        $permission = $this->permissionRepository->update($permission, $data);
+
+        toast('Permission Updated', 'success');
+        return redirect()->route('app.permissions.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Permission $permission)
     {
-        $permission->delete();
-        notify()->success("Permission Deleted", "Success");
+        Gate::authorize('permission-delete');
+        $this->permissionRepository->delete($permission);
+        toast('Permission Deleted', 'success');
         return back();
     }
 }

@@ -19,4 +19,8 @@ class Permission extends Model
     {
         return $this->belongsToMany(Role::class);
     }
+    public function scopeActive($q){
+        return $q->where('is_active', true);
+    }
+
 }

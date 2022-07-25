@@ -13,4 +13,5 @@ interface ModuleRepositoryInterface
     public function update($module, $data);
 
     public function delete($module);
+    public function moduleWithPermission();
 }

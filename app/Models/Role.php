@@ -19,4 +19,7 @@ class Role extends Model
     {
         return $this->hasMany(User::class);
     }
+    public function scopeActive($q){
+        return $q->where('is_active', 1);
+    }
 }
