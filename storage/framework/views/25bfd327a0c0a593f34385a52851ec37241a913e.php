@@ -47,7 +47,7 @@
                                     <div class="widget-content-left mr-3">
                                         <div class="widget-content-left">
                                             <img width="40" class="rounded-circle"
-                                                 src="<?php echo e(config('app.placeholder').'160.png'); ?>">
+                                                 src="<?php if($item->image): ?><?php echo e(asset('storage/user/'. $item->image)); ?> <?php else: ?><?php echo e(config('app.placeholder').'160.png'); ?><?php endif; ?>">
                                         </div>
                                     </div>
                                     <div class="widget-content-left flex2">

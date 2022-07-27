@@ -48,7 +48,7 @@
                                     <div class="widget-content-left mr-3">
                                         <div class="widget-content-left">
                                             <img width="40" class="rounded-circle"
-                                                 src="{{ config('app.placeholder').'160.png'}}">
+                                                 src="@if($item->image){{asset('storage/user/'. $item->image)}} @else{{ config('app.placeholder').'160.png'}}@endif">
                                         </div>
                                     </div>
                                     <div class="widget-content-left flex2">
