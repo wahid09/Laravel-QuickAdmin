@@ -32,4 +32,10 @@ class PermissionRepository implements PermissionRepositoryInterface
     public function delete($permission){
         return $permission->delete($permission);
     }
+    public function permission_automation($module_id, $module_name){
+        $prefix = ['index', 'create', 'update', 'delete'];
+        for($i=0; $i<=4; $i++){
+            
+        }
+    }
 }

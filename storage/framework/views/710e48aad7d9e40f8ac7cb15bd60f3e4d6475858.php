@@ -106,4 +106,4 @@ unset($__errorArgs, $__bag); ?>
 
 <?php $__env->stopPush(); ?>
 
-<?php echo $__env->make('layouts.backend.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\laragon\www\QuickAdmin\resources\views/backend/modules/form.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.backend.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/user/Desktop/php/QuickAdmin/resources/views/backend/modules/form.blade.php ENDPATH**/ ?>

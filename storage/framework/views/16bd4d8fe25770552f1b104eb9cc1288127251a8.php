@@ -101,4 +101,4 @@
 <?php echo $__env->yieldPushContent('js'); ?>
 </body>
 </html>
-<?php /**PATH D:\laragon\www\QuickAdmin\resources\views/layouts/backend/app.blade.php ENDPATH**/ ?>
+<?php /**PATH /Users/user/Desktop/php/QuickAdmin/resources/views/layouts/backend/app.blade.php ENDPATH**/ ?>

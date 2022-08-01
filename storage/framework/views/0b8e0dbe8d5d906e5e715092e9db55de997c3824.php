@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('content'); ?>
 <div class="app-page-title">
     <div class="page-title-wrapper">
@@ -242,4 +240,4 @@
                         </div>
                         
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.backend.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\laragon\www\QuickAdmin\resources\views/backend/dashboard.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.backend.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/user/Desktop/php/QuickAdmin/resources/views/backend/dashboard.blade.php ENDPATH**/ ?>

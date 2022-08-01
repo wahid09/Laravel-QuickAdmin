@@ -12,4 +12,4 @@
         Swal.fire(<?php echo Session::pull('alert.config'); ?>);
     </script>
 <?php endif; ?>
-<?php /**PATH D:\laragon\www\QuickAdmin\vendor\realrashid\sweet-alert\src/../resources/views/alert.blade.php ENDPATH**/ ?>
+<?php /**PATH /Users/user/Desktop/php/QuickAdmin/resources/views/vendor/sweetalert/alert.blade.php ENDPATH**/ ?>

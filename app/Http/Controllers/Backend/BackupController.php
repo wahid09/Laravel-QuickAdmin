@@ -21,7 +21,7 @@ class BackupController extends Controller
         Gate::authorize('backup-index');
         $disk = Storage::disk(config('backup.backup.destination.disks')[0]);
         $files = $disk->files(config('backup.backup.name'));
-        //return $files;
+        return $files;
 
         $backups = [];
 

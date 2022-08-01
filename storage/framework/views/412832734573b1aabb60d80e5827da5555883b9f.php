@@ -24,4 +24,4 @@
         </div>
     </div>
 </div>
-<?php /**PATH D:\laragon\www\QuickAdmin\resources\views/backend/partials/footer.blade.php ENDPATH**/ ?>
+<?php /**PATH /Users/user/Desktop/php/QuickAdmin/resources/views/backend/partials/footer.blade.php ENDPATH**/ ?>

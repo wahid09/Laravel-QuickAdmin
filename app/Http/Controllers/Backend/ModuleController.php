@@ -53,6 +53,7 @@ class ModuleController extends Controller
             'name_bn' => $request->name_bn
         ];
         $module = $this->moduleRepository->create($module);
+        dd($module->id);
         toast('Module Added!', 'success');
 
         return redirect()->route('app.modules.index');
