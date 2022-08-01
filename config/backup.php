@@ -29,6 +29,8 @@ return [
                 'exclude' => [
                     base_path('vendor'),
                     base_path('node_modules'),
+                    base_path('.git'),
+                    base_path('.idea'),
                 ],
 
                 /*
@@ -40,6 +42,13 @@ return [
                  * Determines if it should avoid unreadable folders.
                  */
                 'ignore_unreadable_directories' => false,
+
+                /*
+             * This path is used to make directories in resulting zip-file relative
+             * Set to false to include complete absolute path
+             * Example: base_path()
+             */
+                'relative_path' => base_path(),
             ],
 
             /*

@@ -1,12 +1,5 @@
 @extends('layouts.backend.app')
 @push('css')
-    <link href="{{asset('assets/select/select2.min.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/dropify/dropify.min.css')}}" rel="stylesheet">
-    <style>
-        .dropify-wrapper .dropify-message p {
-            font-size: initial;
-        }
-    </style>
 @endpush
 
 @section('content')
@@ -142,7 +135,8 @@
                                     <label for="avatar">Avatar</label>
                                     <input id="avatar" type="file"
                                            class="dropify form-control @error('image') is-invalid @enderror"
-                                           name="image" @isset($user) data-default-file="{{asset('storage/user/'. $user->image)}}" @endisset>
+                                           name="image"
+                                           @isset($user) data-default-file="{{asset('storage/user/'. $user->image)}}" @endisset>
 
                                     @error('avatar')
                                     <span class="text-danger" role="alert">
@@ -185,8 +179,6 @@
 
 @endsection
 @push('js')
-    <script src="{{asset('assets/select/select2.min.js')}}"></script>
-    <script src="{{asset('assets/dropify/dropify.min.js')}}"></script>
     <script>
         $(document).ready(function () {
             $('.roleSelect').select2();

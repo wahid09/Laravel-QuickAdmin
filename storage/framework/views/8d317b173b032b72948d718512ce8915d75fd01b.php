@@ -59,10 +59,12 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <?php if (\Illuminate\Support\Facades\Blade::check('permission', 'access-dashboard')): ?>
                                 <a class="dropdown-item" href="<?php echo e(route('app.dashboard')); ?>">
                                     <?php echo e(__('Admin dashboard')); ?>
 
                                 </a>
+                                <?php endif; ?>
                                 <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

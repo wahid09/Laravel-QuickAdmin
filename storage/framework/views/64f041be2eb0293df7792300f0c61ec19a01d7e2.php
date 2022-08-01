@@ -10,11 +10,15 @@
                 </div>
                 <div>Module</div>
             </div>
+
             <div class="page-title-actions">
+                <?php if (\Illuminate\Support\Facades\Blade::check('permission', 'module-create')): ?>
                 <a href="<?php echo e(route('app.modules.create')); ?>" class="btn-shadow mr-3 btn btn-primary" name="button">
                     <i class="fas fa-plus-circle"></i>&nbsp;Create Module
                 </a>
+                <?php endif; ?>
             </div>
+
         </div>
     </div>
 
@@ -43,10 +47,11 @@
                         </td>
                         <td class="text-center"><?php echo e($item['created_at']); ?></td>
                         <td class="text-center">
+                            <?php if (\Illuminate\Support\Facades\Blade::check('permission', 'module-update')): ?>
                             <a href="<?php echo e(route('app.modules.edit', $item['id'])); ?>" class="btn btn-primary"><i
                                     class="fas fa-edit"></i></a>
-
-
+                            <?php endif; ?>
+                            <?php if (\Illuminate\Support\Facades\Blade::check('permission', 'module-delete')): ?>
                             <button onclick="deleteData(<?php echo e($item['id']); ?>)" type="button" class="btn btn-danger"><i
                                     class="fas fa-trash"></i></button>
                             <form id="delete-<?php echo e($item['id']); ?>" method="POST"
@@ -54,6 +59,7 @@
                                 <?php echo csrf_field(); ?>
                                 <?php echo method_field('DELETE'); ?>
                             </form>
+                            <?php endif; ?>
                         </td>
                     </tr>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

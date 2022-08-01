@@ -1,12 +1,5 @@
 @extends('layouts.backend.app')
 @push('css')
-<link href="{{asset('assets/select/select2.min.css')}}" rel="stylesheet">
-<link href="{{asset('assets/dropify/dropify.min.css')}}" rel="stylesheet">
-<style>
-    .dropify-wrapper .dropify-message p{
-        font-size: initial;
-    }
-</style>
 @endpush
 
 @section('content')
@@ -87,13 +80,10 @@
 
 @endsection
 @push('js')
-<script src="{{asset('assets/select/select2.min.js')}}"></script>
-<script src="{{asset('assets/dropify/dropify.min.js')}}"></script>
 <script>
     $(document).ready(function() {
         $('.roleSelect').select2();
     });
-    $('.dropify').dropify();
 </script>
 
 @endpush

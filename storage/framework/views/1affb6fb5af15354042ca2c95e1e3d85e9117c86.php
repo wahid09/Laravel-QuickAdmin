@@ -1,11 +1,4 @@
 <?php $__env->startPush('css'); ?>
-<link href="<?php echo e(asset('assets/select/select2.min.css')); ?>" rel="stylesheet">
-<link href="<?php echo e(asset('assets/dropify/dropify.min.css')); ?>" rel="stylesheet">
-<style>
-    .dropify-wrapper .dropify-message p{
-        font-size: initial;
-    }
-</style>
 <?php $__env->stopPush(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -114,13 +107,10 @@ unset($__errorArgs, $__bag); ?>
 
 <?php $__env->stopSection(); ?>
 <?php $__env->startPush('js'); ?>
-<script src="<?php echo e(asset('assets/select/select2.min.js')); ?>"></script>
-<script src="<?php echo e(asset('assets/dropify/dropify.min.js')); ?>"></script>
 <script>
     $(document).ready(function() {
         $('.roleSelect').select2();
     });
-    $('.dropify').dropify();
 </script>
 
 <?php $__env->stopPush(); ?>

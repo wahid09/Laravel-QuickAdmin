@@ -119,7 +119,7 @@ class PermissionSeeder extends Seeder
         Permission::updateOrCreate([
             'module_id' => $moduleBackup->id,
             'name' => 'Update Module',
-            'slug' => 'module-download'
+            'slug' => 'module-update'
         ]);
         Permission::updateOrCreate([
             'module_id' => $moduleBackup->id,
@@ -145,7 +145,7 @@ class PermissionSeeder extends Seeder
         Permission::updateOrCreate([
             'module_id' => $moduleBackup->id,
             'name' => 'Update Permission',
-            'slug' => 'permission-download'
+            'slug' => 'permission-update'
         ]);
         Permission::updateOrCreate([
             'module_id' => $moduleBackup->id,

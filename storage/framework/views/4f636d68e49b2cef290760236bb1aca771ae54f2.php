@@ -1,11 +1,4 @@
 <?php $__env->startPush('css'); ?>
-    <link href="<?php echo e(asset('assets/select/select2.min.css')); ?>" rel="stylesheet">
-    <link href="<?php echo e(asset('assets/dropify/dropify.min.css')); ?>" rel="stylesheet">
-    <style>
-        .dropify-wrapper .dropify-message p {
-            font-size: initial;
-        }
-    </style>
 <?php $__env->stopPush(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -232,7 +225,8 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>"
-                                           name="image" <?php if(isset($user)): ?> data-default-file="<?php echo e(asset('storage/user/'. $user->image)); ?>" <?php endif; ?>>
+                                           name="image"
+                                           <?php if(isset($user)): ?> data-default-file="<?php echo e(asset('storage/user/'. $user->image)); ?>" <?php endif; ?>>
 
                                     <?php $__errorArgs = ['avatar'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -296,8 +290,6 @@ unset($__errorArgs, $__bag); ?>
 
 <?php $__env->stopSection(); ?>
 <?php $__env->startPush('js'); ?>
-    <script src="<?php echo e(asset('assets/select/select2.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('assets/dropify/dropify.min.js')); ?>"></script>
     <script>
         $(document).ready(function () {
             $('.roleSelect').select2();

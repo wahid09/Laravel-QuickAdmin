@@ -11,11 +11,15 @@
                 </div>
                 <div>Module</div>
             </div>
+
             <div class="page-title-actions">
+                @permission('module-create')
                 <a href="{{ route('app.modules.create') }}" class="btn-shadow mr-3 btn btn-primary" name="button">
                     <i class="fas fa-plus-circle"></i>&nbsp;Create Module
                 </a>
+                @endpermission
             </div>
+
         </div>
     </div>
 
@@ -44,10 +48,11 @@
                         </td>
                         <td class="text-center">{{ $item['created_at'] }}</td>
                         <td class="text-center">
+                            @permission('module-update')
                             <a href="{{ route('app.modules.edit', $item['id'])}}" class="btn btn-primary"><i
                                     class="fas fa-edit"></i></a>
-
-
+                            @endpermission
+                            @permission('module-delete')
                             <button onclick="deleteData({{$item['id']}})" type="button" class="btn btn-danger"><i
                                     class="fas fa-trash"></i></button>
                             <form id="delete-{{$item['id']}}" method="POST"
@@ -55,6 +60,7 @@
                                 @csrf
                                 @method('DELETE')
                             </form>
+                            @endpermission
                         </td>
                     </tr>
                 @endforeach
