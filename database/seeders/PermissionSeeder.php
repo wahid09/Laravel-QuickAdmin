@@ -32,22 +32,22 @@ class PermissionSeeder extends Seeder
         ]);
         Permission::updateOrCreate([
             'module_id' => $moduleRole->id,
-            'name' => 'Access Role',
+            'name' => 'Role Index',
             'slug' => 'role-index'
         ]);
         Permission::updateOrCreate([
             'module_id' => $moduleRole->id,
-            'name' => 'Create Role',
+            'name' => 'Role Create',
             'slug' => 'role-create'
         ]);
         Permission::updateOrCreate([
             'module_id' => $moduleRole->id,
-            'name' => 'Update Role',
+            'name' => 'Role Update',
             'slug' => 'role-update'
         ]);
         Permission::updateOrCreate([
             'module_id' => $moduleRole->id,
-            'name' => 'Delete Role',
+            'name' => 'Role Delete',
             'slug' => 'role-delete'
         ]);
         // User
@@ -57,22 +57,22 @@ class PermissionSeeder extends Seeder
         ]);
         Permission::updateOrCreate([
             'module_id' => $moduleUser->id,
-            'name' => 'Access User',
+            'name' => 'User Index',
             'slug' => 'user-index'
         ]);
         Permission::updateOrCreate([
             'module_id' => $moduleUser->id,
-            'name' => 'Create User',
+            'name' => 'User Create',
             'slug' => 'user-create'
         ]);
         Permission::updateOrCreate([
             'module_id' => $moduleUser->id,
-            'name' => 'Update User',
+            'name' => 'User Update',
             'slug' => 'user-update'
         ]);
         Permission::updateOrCreate([
             'module_id' => $moduleUser->id,
-            'name' => 'Delete User',
+            'name' => 'User Delete',
             'slug' => 'user-delete'
         ]);
         //Backup
@@ -82,22 +82,22 @@ class PermissionSeeder extends Seeder
         ]);
         Permission::updateOrCreate([
             'module_id' => $moduleBackup->id,
-            'name' => 'Access Backup',
+            'name' => 'Backup Index',
             'slug' => 'backup-index'
         ]);
         Permission::updateOrCreate([
             'module_id' => $moduleBackup->id,
-            'name' => 'Create Backup',
+            'name' => 'Backup Create',
             'slug' => 'backup-create'
         ]);
         Permission::updateOrCreate([
             'module_id' => $moduleBackup->id,
-            'name' => 'Update Backup',
+            'name' => 'Backup Update',
             'slug' => 'backup-download'
         ]);
         Permission::updateOrCreate([
             'module_id' => $moduleBackup->id,
-            'name' => 'Delete Backup',
+            'name' => 'Backup Delete',
             'slug' => 'backup-delete'
         ]);
 
@@ -108,22 +108,22 @@ class PermissionSeeder extends Seeder
         ]);
         Permission::updateOrCreate([
             'module_id' => $moduleBackup->id,
-            'name' => 'Access Module',
+            'name' => 'Module Index',
             'slug' => 'module-index'
         ]);
         Permission::updateOrCreate([
             'module_id' => $moduleBackup->id,
-            'name' => 'Create Module',
+            'name' => 'Module Create',
             'slug' => 'module-create'
         ]);
         Permission::updateOrCreate([
             'module_id' => $moduleBackup->id,
-            'name' => 'Update Module',
+            'name' => 'Module Update',
             'slug' => 'module-update'
         ]);
         Permission::updateOrCreate([
             'module_id' => $moduleBackup->id,
-            'name' => 'Delete Module',
+            'name' => 'Module Delete',
             'slug' => 'module-delete'
         ]);
 
@@ -134,22 +134,22 @@ class PermissionSeeder extends Seeder
         ]);
         Permission::updateOrCreate([
             'module_id' => $moduleBackup->id,
-            'name' => 'Access Permission',
+            'name' => 'Permission Index',
             'slug' => 'permission-index'
         ]);
         Permission::updateOrCreate([
             'module_id' => $moduleBackup->id,
-            'name' => 'Create Permission',
+            'name' => 'Permission Create',
             'slug' => 'permission-create'
         ]);
         Permission::updateOrCreate([
             'module_id' => $moduleBackup->id,
-            'name' => 'Update Permission',
+            'name' => 'Permission Update',
             'slug' => 'permission-update'
         ]);
         Permission::updateOrCreate([
             'module_id' => $moduleBackup->id,
-            'name' => 'Delete Permission',
+            'name' => 'Permission Delete',
             'slug' => 'permission-delete'
         ]);
     }

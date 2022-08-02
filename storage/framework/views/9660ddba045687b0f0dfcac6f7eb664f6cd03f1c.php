@@ -45,8 +45,8 @@
         <!-- Dropdown list-->
         <ul class="vertical-nav-menu">
             <br>
-            <li class="app-sidebar__heading"><a href="{{ route('app.dashboard') }}"
-                                                class="{{ Route::is('app.dashboard') ? 'mm-active' : ''}}"><i
+            <li class="app-sidebar__heading"><a href="<?php echo e(route('app.dashboard')); ?>"
+                                                class="<?php echo e(Route::is('app.dashboard') ? 'mm-active' : ''); ?>"><i
                         class="metismenu-icon pe-7s-rocket"></i>Dashboard
                 </a>
             </li>
@@ -55,43 +55,43 @@
                         class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                 </a>
                 <ul>
-                    @permission('module-index')
-                    <li class="{{Request::is('app/modules*') ? 'mm-active' : ''}}">
-                        <a href="{{ route('app.modules.index') }}">
+                    <?php if (\Illuminate\Support\Facades\Blade::check('permission', 'module-index')): ?>
+                    <li class="<?php echo e(Request::is('app/modules*') ? 'mm-active' : ''); ?>">
+                        <a href="<?php echo e(route('app.modules.index')); ?>">
                             <i class="metismenu-icon pe-7s-cloud"></i>Module
                         </a>
                     </li>
-                    @endpermission
+                    <?php endif; ?>
 
-                    @permission('permission-index')
-                    <li class="{{ Request::is('app/permissions*') ? 'mm-active' : ''}}">
-                        <a href="{{ route('app.permissions.index') }}">
+                    <?php if (\Illuminate\Support\Facades\Blade::check('permission', 'permission-index')): ?>
+                    <li class="<?php echo e(Request::is('app/permissions*') ? 'mm-active' : ''); ?>">
+                        <a href="<?php echo e(route('app.permissions.index')); ?>">
                             <i class="metismenu-icon pe-7s-cloud"></i>Permissions
                         </a>
                     </li>
-                    @endpermission
-                    @permission('role-index')
-                    <li class="{{Request::is('app/roles*') ? 'mm-active' : ''}}">
-                        <a href="{{ route('app.roles.index') }}">
+                    <?php endif; ?>
+                    <?php if (\Illuminate\Support\Facades\Blade::check('permission', 'role-index')): ?>
+                    <li class="<?php echo e(Request::is('app/roles*') ? 'mm-active' : ''); ?>">
+                        <a href="<?php echo e(route('app.roles.index')); ?>">
                             <i class="metismenu-icon pe-7s-check"></i>Roles
                         </a>
                     </li>
-                    @endpermission
-                    @permission('permission-access')
-                    <li class="{{ Request::is('app/permissions*') ? 'mm-active' : ''}}">
-                        <a href="{{ route('app.permissions.index') }}">
+                    <?php endif; ?>
+                    <?php if (\Illuminate\Support\Facades\Blade::check('permission', 'permission-access')): ?>
+                    <li class="<?php echo e(Request::is('app/permissions*') ? 'mm-active' : ''); ?>">
+                        <a href="<?php echo e(route('app.permissions.index')); ?>">
                             <i class="metismenu-icon pe-7s-cloud"></i>Permissions
                         </a>
                     </li>
-                    @endpermission
+                    <?php endif; ?>
 
-                    @permission('user-index')
-                    <li class="{{ Request::is('app/users*') ? 'mm-active' : ''}}">
-                        <a href="{{ route('app.users.index') }}">
+                    <?php if (\Illuminate\Support\Facades\Blade::check('permission', 'user-index')): ?>
+                    <li class="<?php echo e(Request::is('app/users*') ? 'mm-active' : ''); ?>">
+                        <a href="<?php echo e(route('app.users.index')); ?>">
                             <i class="metismenu-icon pe-7s-users"></i>Users
                         </a>
                     </li>
-                    @endpermission
+                    <?php endif; ?>
 
                 </ul>
             </li>
@@ -101,13 +101,13 @@
                         class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                 </a>
                 <ul>
-                    @permission('backup-index')
-                    <li class="{{Request::is('app/backups*') ? 'mm-active' : ''}}">
-                        <a href="{{ route('app.backups.index') }}" class="">
+                    <?php if (\Illuminate\Support\Facades\Blade::check('permission', 'backup-index')): ?>
+                    <li class="<?php echo e(Request::is('app/backups*') ? 'mm-active' : ''); ?>">
+                        <a href="<?php echo e(route('app.backups.index')); ?>" class="">
                             <i class="metismenu-icon pe-7s-cloud"></i>Backups
                         </a>
                     </li>
-                    @endpermission
+                    <?php endif; ?>
                 </ul>
             </li>
 
@@ -131,3 +131,4 @@
     <!-- Example -->
     <!-- End -->
 </div>
+<?php /**PATH D:\laragon\www\QuickAdmin\resources\views/backend/partials/sidebar.blade.php ENDPATH**/ ?>

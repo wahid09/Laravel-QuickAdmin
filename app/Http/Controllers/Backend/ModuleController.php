@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ModuleRequest;
 use App\Models\Module;
 use App\Repository\ModuleRepositoryInterface;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use App\Repository\Permission\PermissionRepositoryInterface;
+use Illuminate\Support\Facades\DB;
 
 class ModuleController extends Controller
 {
@@ -18,10 +18,12 @@ class ModuleController extends Controller
      */
 
     private $moduleRepository;
+    private $permissionRepository;
 
-    public function __construct(ModuleRepositoryInterface $moduleRepository)
+    public function __construct(ModuleRepositoryInterface $moduleRepository, PermissionRepositoryInterface $permissionRepository)
     {
         $this->moduleRepository = $moduleRepository;
+        $this->permissionRepository = $permissionRepository;
     }
 
     public function index()
@@ -48,15 +50,25 @@ class ModuleController extends Controller
      */
     public function store(ModuleRequest $request)
     {
-        $module = [
-            'name' => $request->name,
-            'name_bn' => $request->name_bn
-        ];
-        $module = $this->moduleRepository->create($module);
-        dd($module->id);
-        toast('Module Added!', 'success');
+        DB::beginTransaction();
+        try {
+            $module = [
+                'name' => $request->name,
+                'name_bn' => $request->name_bn
+            ];
+            $module = $this->moduleRepository->create($module);
+            //dd($module->id);
+            $permissions = $this->permissionRepository->permission_automation($module->id, $module->name);
+            DB::commit();
 
-        return redirect()->route('app.modules.index');
+            toast('Module Added!', 'success');
+
+            return redirect()->route('app.modules.index');
+        }catch (\Exception $e){
+            DB::rollBack();
+            throw $e;
+        }
+
     }
 
     /**
