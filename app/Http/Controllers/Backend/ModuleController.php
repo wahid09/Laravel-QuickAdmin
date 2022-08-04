@@ -60,11 +60,11 @@ class ModuleController extends Controller
             //dd($module->id);
             $permissions = $this->permissionRepository->permission_automation($module->id, $module->name);
             DB::commit();
-
+            \LogActivity::addToLog('Module Added!.');
             toast('Module Added!', 'success');
 
             return redirect()->route('app.modules.index');
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             DB::rollBack();
             throw $e;
         }
@@ -102,13 +102,24 @@ class ModuleController extends Controller
      */
     public function update(ModuleRequest $request, Module $module)
     {
-        $data = [
-            'name' => $request->name,
-            'name_bn' => $request->name_bn
-        ];
-        $module = $this->moduleRepository->update($module, $data);
-        toast('Module updated!', 'success');
-        return redirect()->route('app.modules.index');
+        DB::beginTransaction();
+        try {
+            $data = [
+                'name' => $request->name,
+                'name_bn' => $request->name_bn
+            ];
+            $modules = $this->moduleRepository->update($module, $data);
+            $permissions = $this->permissionRepository->update_permission_automation($module->id, $request->name);
+            //return $permissions;
+            DB::commit();
+            \LogActivity::addToLog('Module updated!.');
+            toast('Module updated!', 'success');
+            return redirect()->route('app.modules.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+
     }
 
     /**
@@ -119,8 +130,18 @@ class ModuleController extends Controller
      */
     public function destroy(Module $module)
     {
-        $this->moduleRepository->delete($module);
-        toast('Module deleted!', 'success');
-        return redirect()->route('app.modules.index');
+        try {
+            if($module->permissions()->count()){
+                toast( "Can't delete, Module has permission record.", 'success');
+                return redirect()->back();
+            }
+            $this->moduleRepository->delete($module);
+            \LogActivity::addToLog('Module has been deleted!.');
+            toast('Module deleted!', 'success');
+            return redirect()->route('app.modules.index');
+
+        } catch (\Exception $e) {
+            throw $e;
+        }
     }
 }

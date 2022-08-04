@@ -8,6 +8,11 @@
         font-size: 16px;
     }
 
+    .closed-sidebar:not(.sidebar-mobile-open) .app-sidebar .scrollbar-sidebar {
+        position: static;
+        height: auto;
+        overflow: initial !important;
+    }
 </style>
 <div class="app-sidebar sidebar-shadow">
     <div class="app-header__logo">
@@ -105,6 +110,14 @@
                     <li class="<?php echo e(Request::is('app/backups*') ? 'mm-active' : ''); ?>">
                         <a href="<?php echo e(route('app.backups.index')); ?>" class="">
                             <i class="metismenu-icon pe-7s-cloud"></i>Backups
+                        </a>
+                    </li>
+                    <?php endif; ?>
+
+                    <?php if (\Illuminate\Support\Facades\Blade::check('permission', 'log-index')): ?>
+                    <li class="<?php echo e(Request::is('app/logs*') ? 'mm-active' : ''); ?>">
+                        <a href="<?php echo e(route('app.log_list')); ?>" class="">
+                            <i class="metismenu-icon pe-7s-cloud"></i>Logs
                         </a>
                     </li>
                     <?php endif; ?>

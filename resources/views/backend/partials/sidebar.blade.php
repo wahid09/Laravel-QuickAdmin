@@ -8,6 +8,11 @@
         font-size: 16px;
     }
 
+    .closed-sidebar:not(.sidebar-mobile-open) .app-sidebar .scrollbar-sidebar {
+        position: static;
+        height: auto;
+        overflow: initial !important;
+    }
 </style>
 <div class="app-sidebar sidebar-shadow">
     <div class="app-header__logo">
@@ -105,6 +110,14 @@
                     <li class="{{Request::is('app/backups*') ? 'mm-active' : ''}}">
                         <a href="{{ route('app.backups.index') }}" class="">
                             <i class="metismenu-icon pe-7s-cloud"></i>Backups
+                        </a>
+                    </li>
+                    @endpermission
+
+                    @permission('log-index')
+                    <li class="{{Request::is('app/logs*') ? 'mm-active' : ''}}">
+                        <a href="{{ route('app.log_list') }}" class="">
+                            <i class="metismenu-icon pe-7s-cloud"></i>Logs
                         </a>
                     </li>
                     @endpermission

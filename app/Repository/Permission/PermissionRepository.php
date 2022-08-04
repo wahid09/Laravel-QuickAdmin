@@ -7,6 +7,7 @@ namespace App\Repository\Permission;
 use App\Models\Module;
 use App\Models\Permission;
 use Illuminate\Support\Str;
+use DB;
 
 class PermissionRepository implements PermissionRepositoryInterface
 {
@@ -51,7 +52,7 @@ class PermissionRepository implements PermissionRepositoryInterface
         for ($i = 0; $i < count($prefix); $i++) {
             $fields = [
                 'module_id' => $module_id,
-                'name' => str::singular($module_name).' '.$prefix[$i],
+                'name' => str::singular($module_name) . ' ' . $prefix[$i],
                 'slug' => str::slug(str::singular($module_name)) . '-' . $prefix[$i]
             ];
 
@@ -59,5 +60,30 @@ class PermissionRepository implements PermissionRepositoryInterface
         }
 
         return $permissios;
+    }
+
+    public function update_permission_automation($module_id, $module_name)
+    {
+        $prefix = ['index', 'create', 'update', 'delete'];
+        $permissions_id = DB::table('permissions')
+            ->select('id')
+            ->where('module_id', $module_id)
+            ->get();
+        $id= json_decode( json_encode($permissions_id), true);
+        //print_r($id);
+        for ($i = 0; $i < count($prefix); $i++) {
+            $permission = Permission::findOrFail($id[$i]);
+            //dd($permission);
+            $fields = [
+                'module_id' => $module_id,
+                'name' => str::singular($module_name) . ' ' . $prefix[$i],
+                'slug' => str::slug(str::singular($module_name)) . '-' . $prefix[$i]
+            ];
+
+            //$permission->update($fields);
+            DB::table('permissions')->where('id', $id[$i])->update($fields);
+        }
+
+        //return $permissios;
     }
 }

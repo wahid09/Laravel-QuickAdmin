@@ -19,12 +19,6 @@
 /*------------------------------------------------------------------------------
  * Helpers
  *----------------------------------------------------------------------------*/
-
-.closed-sidebar:not(.sidebar-mobile-open) .app-sidebar .scrollbar-sidebar {
-        position: static;
-        height: auto;
-        overflow: initial !important;
-    }
 .fancytree-helper-hidden {
   display: none;
 }

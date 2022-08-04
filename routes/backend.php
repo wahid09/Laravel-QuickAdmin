@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\PermissionController;
 use App\Http\Controllers\Backend\BookController;
+use App\Http\Controllers\Backend\LogActivityController;
 
 
 
@@ -31,3 +32,8 @@ Route::resource('/permissions', PermissionController::class);
 
 //Modules
 Route::resource('/modules', ModuleController::class);
+
+//Log activity
+Route::get('/logs', [LogActivityController::class, 'index'])->name('log_list');
+Route::get('/add_log', [LogActivityController::class, 'store'])->name('add_log');
+Route::delete('/log-delete/{id}', [LogActivityController::class, 'delete'])->name('log_delete');

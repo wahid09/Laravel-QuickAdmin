@@ -49,17 +49,15 @@
     <?php echo $__env->yieldPushContent('css'); ?>
 </head>
 <body>
-<div id="app">
-    <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
-        <?php echo $__env->make('backend.partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-        <div class="app-main">
-            <?php echo $__env->make('backend.partials.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-            <div class="app-main__outer">
-                <div class="app-main__inner">
-                    <?php echo $__env->yieldContent('content'); ?>
-                </div>
-                <?php echo $__env->make('backend.partials.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+    <?php echo $__env->make('backend.partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <div class="app-main">
+        <?php echo $__env->make('backend.partials.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        <div class="app-main__outer">
+            <div class="app-main__inner">
+                <?php echo $__env->yieldContent('content'); ?>
             </div>
+            <?php echo $__env->make('backend.partials.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         </div>
     </div>
 </div>

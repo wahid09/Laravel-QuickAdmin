@@ -16,4 +16,5 @@ interface PermissionRepositoryInterface
 
     public function delete($permission);
     public function permission_automation($module_id, $module_name);
+    public function update_permission_automation($module_id, $module_name);
 }

@@ -49,17 +49,15 @@
     @stack('css')
 </head>
 <body>
-<div id="app">
-    <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
-        @include('backend.partials.header')
-        <div class="app-main">
-            @include('backend.partials.sidebar')
-            <div class="app-main__outer">
-                <div class="app-main__inner">
-                    @yield('content')
-                </div>
-                @include('backend.partials.footer')
+<div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+    @include('backend.partials.header')
+    <div class="app-main">
+        @include('backend.partials.sidebar')
+        <div class="app-main__outer">
+            <div class="app-main__inner">
+                @yield('content')
             </div>
+            @include('backend.partials.footer')
         </div>
     </div>
 </div>

@@ -152,5 +152,21 @@ class PermissionSeeder extends Seeder
             'name' => 'Permission Delete',
             'slug' => 'permission-delete'
         ]);
+
+        //Log
+        $moduleBackup = Module::updateOrCreate([
+            'name' => 'Logs',
+            'name_bn' => 'লগস'
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleBackup->id,
+            'name' => 'Log Index',
+            'slug' => 'log-index'
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleBackup->id,
+            'name' => 'Log Delete',
+            'slug' => 'log-delete'
+        ]);
     }
 }
