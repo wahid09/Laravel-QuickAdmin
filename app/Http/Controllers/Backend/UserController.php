@@ -74,6 +74,7 @@ class UserController extends Controller
         ];
 
         $user = $this->userRepository->create($data);
+        \LogActivity::addToLog('User Added!.');
         toast('User Added successfully!', 'success');
 
         return redirect()->route('app.users.index');
@@ -140,6 +141,7 @@ class UserController extends Controller
         ];
         $user = $this->userRepository->update($user, $data);
 
+        \LogActivity::addToLog('User Updated!.');
         toast('User Updated successfully!', 'success');
         return redirect()->route('app.users.index');
     }
@@ -161,6 +163,7 @@ class UserController extends Controller
             }
         }
 
+        \LogActivity::addToLog('User Deleted!.');
         toast('User Deleted successfully!', 'success');
         return redirect()->route('app.users.index');
     }

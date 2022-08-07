@@ -54,7 +54,7 @@
                         <td class="text-center"><?php echo e($item->agent); ?></td>
 
                         <td class="text-center">
-                            <?php if (\Illuminate\Support\Facades\Blade::check('permission', 'role-delete')): ?>
+                            <?php if (\Illuminate\Support\Facades\Blade::check('permission', 'log-delete')): ?>
                             <button onclick="deleteData(<?php echo e($item->id); ?>)" type="button" class="btn btn-danger"><i
                                     class="fas fa-trash"></i></button>
                             <form id="delete-<?php echo e($item->id); ?>" method="POST"

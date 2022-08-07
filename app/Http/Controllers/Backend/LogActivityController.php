@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\LogActivity;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Gate;
 
 class LogActivityController extends Controller
 {
@@ -15,6 +16,7 @@ class LogActivityController extends Controller
 
     public function index()
     {
+        Gate::authorize('log-index');
         $logs = \LogActivity::logActivityLists();
         return view('backend.logs.index', compact('logs'));
     }
@@ -25,6 +27,7 @@ class LogActivityController extends Controller
         dd('log insert successfully.');
     }
     public function delete($id){
+        Gate::authorize('log-delete');
         try {
             $log = LogActivity::findOrFail($id);
             $log->delete($log);

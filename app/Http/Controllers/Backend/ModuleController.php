@@ -8,6 +8,7 @@ use App\Models\Module;
 use App\Repository\ModuleRepositoryInterface;
 use App\Repository\Permission\PermissionRepositoryInterface;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class ModuleController extends Controller
 {
@@ -28,6 +29,7 @@ class ModuleController extends Controller
 
     public function index()
     {
+        Gate::authorize('module-index');
         $modules = $this->moduleRepository->index();
         return view('backend.modules.index', compact('modules'));
     }
@@ -39,6 +41,7 @@ class ModuleController extends Controller
      */
     public function create()
     {
+        Gate::authorize('module-create');
         return view('backend.modules.form');
     }
 
@@ -50,6 +53,7 @@ class ModuleController extends Controller
      */
     public function store(ModuleRequest $request)
     {
+        Gate::authorize('module-create');
         DB::beginTransaction();
         try {
             $module = [
@@ -79,6 +83,7 @@ class ModuleController extends Controller
      */
     public function show(Module $module)
     {
+        Gate::authorize('module-index');
         return $this->moduleRepository->show($module);
     }
 
@@ -90,6 +95,7 @@ class ModuleController extends Controller
      */
     public function edit(Module $module)
     {
+        Gate::authorize('module-update');
         return view('backend.modules.form', compact('module'));
     }
 
@@ -102,6 +108,7 @@ class ModuleController extends Controller
      */
     public function update(ModuleRequest $request, Module $module)
     {
+        Gate::authorize('module-update');
         DB::beginTransaction();
         try {
             $data = [
@@ -130,6 +137,7 @@ class ModuleController extends Controller
      */
     public function destroy(Module $module)
     {
+        Gate::authorize('module-delete');
         try {
             if($module->permissions()->count()){
                 toast( "Can't delete, Module has permission record.", 'success');

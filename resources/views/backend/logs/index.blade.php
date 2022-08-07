@@ -55,7 +55,7 @@
                         <td class="text-center">{{ $item->agent }}</td>
 
                         <td class="text-center">
-                            @permission('role-delete')
+                            @permission('log-delete')
                             <button onclick="deleteData({{$item->id}})" type="button" class="btn btn-danger"><i
                                     class="fas fa-trash"></i></button>
                             <form id="delete-{{$item->id}}" method="POST"

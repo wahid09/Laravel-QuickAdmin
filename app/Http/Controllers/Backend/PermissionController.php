@@ -62,7 +62,7 @@ class PermissionController extends Controller
         ];
 
         $permission = $this->permissionRepository->create($data);
-
+        \LogActivity::addToLog('Permission Added!.');
         toast('Permission Added', 'success');
 
         return redirect()->route('app.permissions.index');
@@ -110,7 +110,7 @@ class PermissionController extends Controller
         ];
 
         $permission = $this->permissionRepository->update($permission, $data);
-
+        \LogActivity::addToLog('Permission Updated!.');
         toast('Permission Updated', 'success');
         return redirect()->route('app.permissions.index');
     }
@@ -125,6 +125,7 @@ class PermissionController extends Controller
     {
         Gate::authorize('permission-delete');
         $this->permissionRepository->delete($permission);
+        \LogActivity::addToLog('Permission Deleted!.');
         toast('Permission Deleted', 'success');
         return back();
     }

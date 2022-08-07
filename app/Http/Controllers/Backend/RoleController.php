@@ -71,7 +71,8 @@ class RoleController extends Controller
         ];
 
         $role = $this->roleRepository->create($data)->permissions()->sync($request->input('permissions'), []);
-        toast('Role Added', 'success');
+        \LogActivity::addToLog('Role Added!.');
+        toast('Role Added.', 'success');
         return redirect()->route('app.roles.index');
     }
 
@@ -133,7 +134,8 @@ class RoleController extends Controller
 //            $role->permissions()->sync($request->input('permissions'));
 //        }
         $role->permissions()->sync($request->input('permissions'));
-        toast('Role Updated', 'success');
+        \LogActivity::addToLog('Role Updated!.');
+        toast('Role Updated.', 'success');
         return redirect()->route('app.roles.index');
     }
 
@@ -148,7 +150,8 @@ class RoleController extends Controller
         Gate::authorize('role-delete');
         if ($role->deletable) {
             $this->roleRepository->delete($role);
-            toast('Role Deleted', 'success');
+            \LogActivity::addToLog('Role Deleted!.');
+            toast('Role Deleted.', 'success');
         } else {
             toast('You can\'t delete system role', 'error');
         }

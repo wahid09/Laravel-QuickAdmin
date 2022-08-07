@@ -21,7 +21,6 @@ class BackupController extends Controller
         Gate::authorize('backup-index');
         $disk = Storage::disk(config('backup.backup.destination.disks')[0]);
         $files = $disk->files(config('backup.backup.name'));
-        return $files;
 
         $backups = [];
 
@@ -75,8 +74,8 @@ class BackupController extends Controller
     {
         Gate::authorize('backup-create');
         Artisan::call('backup:run');
-
-        notify()->success("Backup Created", "Success");
+        \LogActivity::addToLog('Backup created!.');
+        toast('Backup Created!', 'success');
         return back();
     }
     public function download($file_name)
@@ -145,7 +144,8 @@ class BackupController extends Controller
         if ($disk->exists(config('backup.backup.name') . '/' . $file_name)) {
             $disk->delete(config('backup.backup.name') . '/' . $file_name);
         }
-        notify()->success("Backup Deleted", "Success");
+        \LogActivity::addToLog('Backup deleted!.');
+        toast('Backup Deleted!', 'success');
         return back();
     }
     public function clean()
@@ -153,8 +153,8 @@ class BackupController extends Controller
         Gate::authorize('backup-delete');
 
         Artisan::call('backup:clean');
-
-        notify()->success("All Old Backup has been deleted", "Success");
+        \LogActivity::addToLog('Old Backup has been deleted!.');
+        toast('All Old Backup has been deleted!', 'success');
         return back();
     }
 }
