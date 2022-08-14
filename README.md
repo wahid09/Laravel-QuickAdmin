@@ -1,11 +1,9 @@
+## About QuickAdmin
+
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
-
-## About QuickAdmin
 
 QuickAdmin is a web-based starter kit to help to start a large application without thinking about authentication, authorization, and role-based permission. 
 
@@ -60,4 +58,4 @@ php artisan serve
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The QuickAdmin is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
