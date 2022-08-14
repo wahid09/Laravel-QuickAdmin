@@ -45,6 +45,15 @@
             overflow-y: scroll;
             height: auto;
         }
+
+        .nav-link .nav-link-icon {
+            color: #3f6ad8;
+            font-size: 1rem;
+            width: 30px;
+            text-align: center;
+            opacity: .45;
+            margin-left: 81px;
+        }
     </style>
     <?php echo $__env->yieldPushContent('css'); ?>
 </head>

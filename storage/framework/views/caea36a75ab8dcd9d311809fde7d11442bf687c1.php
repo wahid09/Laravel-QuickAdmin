@@ -1,14 +1,15 @@
 <style>
-    .mt-1, .my-1 {
-        margin-top: .25rem !important;
-        margin-left: 53px;
-    }
+    /*.mt-1, .my-1 {*/
+    /*    margin-top: .25rem !important;*/
+    /*    margin-left: 53px;*/
+    /*}*/
 </style>
 <div class="app-header header-shadow">
     <div class="app-header__logo">
         <div class="head-text mt-1 mx-10">
             
             
+            <p>QuickAdmin</p>
         </div>
         <div class="header__pane ml-auto">
             <div>
@@ -42,19 +43,19 @@
     </div>
     <div class="app-header__content">
         <div class="app-header-left">
-            <div class="search-wrapper">
-                <div class="input-holder">
-                    <input type="text" class="search-input" placeholder="Type to search">
-                    <button class="search-icon"><span></span></button>
-                </div>
-                <button class="close"></button>
-            </div>
+
+
+
+
+
+
+
             <ul class="header-menu nav">
                 <li class="nav-item">
-                    
-                    
-                    
-                    
+                    <a href="<?php echo e(url('/')); ?>" class="nav-link" target="_blank">
+                        <i class="nav-link-icon fa fa-database"> </i>
+                        Visit site
+                    </a>
                 </li>
 
             </ul>
@@ -77,10 +78,10 @@
                                 </a>
                                 <div tabindex="-1" role="menu" aria-hidden="true"
                                      class="dropdown-menu dropdown-menu-right">
-
-
-
-
+                                    
+                                    
+                                    
+                                    
                                     <button type="button" tabindex="0" class="dropdown-item" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i
                                             class="fas fa-sign-out-alt"></i>&nbsp;Logout
