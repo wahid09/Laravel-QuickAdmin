@@ -168,6 +168,7 @@ return [
          */
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Scyllaly\HCaptcha\HCaptchaServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -233,6 +234,7 @@ return [
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'LogActivity' => App\Services\LogActivity::class,
+        'HCaptcha' => Scyllaly\HCaptcha\Facades\HCaptcha::class,
 
     ],
 

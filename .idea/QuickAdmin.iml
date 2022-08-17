@@ -7,6 +7,7 @@
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
       <sourceFolder url="file://$MODULE_DIR$/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/anhskohbo/no-captcha" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/appslabke/lara-izitoast" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/asm89/stack-cors" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/barryvdh/laravel-debugbar" />
@@ -76,6 +77,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/ramsey/collection" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/ramsey/uuid" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/realrashid/sweet-alert" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/scyllaly/hcaptcha" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/cli-parser" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/code-unit" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/code-unit-reverse-lookup" />

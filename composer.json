@@ -20,6 +20,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "3.0",
         "realrashid/sweet-alert": "^5.1",
+        "scyllaly/hcaptcha": "^4.4",
         "spatie/laravel-backup": "^6.11"
     },
     "require-dev": {

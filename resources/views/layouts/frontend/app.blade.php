@@ -17,6 +17,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/frontend.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+{{--    {!! NoCaptcha::renderJs() !!}--}}
+     {!! HCaptcha::renderJs() !!}
 </head>
 <body>
 <div id="app">

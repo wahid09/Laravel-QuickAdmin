@@ -17,6 +17,9 @@
     <!-- Styles -->
     <link href="<?php echo e(asset('css/frontend.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
+
+     <?php echo HCaptcha::renderJs(); ?>
+
 </head>
 <body>
 <div id="app">
