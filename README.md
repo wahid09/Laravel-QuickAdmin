@@ -55,6 +55,35 @@ php artisan migrate:refresh --seed
 php artisan serve
 ```
 
+## Role and Permission:
+The QuickAdmin provides dynamic ACL in a single action of every user. To achieve this functionality use the below code in your controller method.
+
+```shell
+Gate::authorize('permission slug');
+```
+
+e.g
+
+```shell 
+public function store(ModuleRequest $request){
+       Gate::authorize('module-create');
+        //code
+}
+```
+Blade directive for sidebar menu control.
+
+```shell
+@permission('permission slug')
+//code
+@endpermission
+```
+
+## User log activity control:
+To track the record of user activity using the below code in every action method in your controller.
+
+```shell
+\LogActivity::addToLog('user action');
+```
 
 ## License
 
