@@ -19,6 +19,7 @@
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "3.0",
+        "rap2hpoutre/laravel-log-viewer": "^2.2",
         "realrashid/sweet-alert": "^5.1",
         "scyllaly/hcaptcha": "^4.4",
         "spatie/laravel-backup": "^6.11"
