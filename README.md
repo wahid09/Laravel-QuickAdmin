@@ -16,7 +16,7 @@ QuickAdmin is accessible, powerful, and provides tools required for large, robus
 
 - PHP >= 7.3
 
-###### Getting Started
+# Getting Started
 
 - First clone the project and change the directory
 
