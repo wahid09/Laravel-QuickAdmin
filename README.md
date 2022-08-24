@@ -1,4 +1,4 @@
-###### About QuickAdmin
+# About QuickAdmin
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
@@ -58,7 +58,7 @@ php artisan serve
  - Email: admin@admin.com
  - Password: password
 
-###### Role and Permission:
+# Role and Permission:
 The QuickAdmin provides dynamic ACL in a single action of every user. To achieve this functionality use the below code in your controller method.
 
 ```shell
