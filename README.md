@@ -1,4 +1,4 @@
-## About QuickAdmin
+# About QuickAdmin
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
@@ -12,11 +12,11 @@ QuickAdmin is a web-based starter kit to help to start a large application witho
 
 QuickAdmin is accessible, powerful, and provides tools required for large, robust applications.
 
-## Prerequisite
+###### Prerequisite
 
 - PHP >= 7.3
 
-## Getting Started
+# Getting Started
 
 - First clone the project and change the directory
 
@@ -54,8 +54,11 @@ php artisan migrate:refresh --seed
 ```shell
 php artisan serve
 ```
+###### Super Admin Login
+ - Email: admin@admin.com
+ - Password: password
 
-## Role and Permission:
+# Role and Permission:
 The QuickAdmin provides dynamic ACL in a single action of every user. To achieve this functionality use the below code in your controller method.
 
 ```shell
@@ -78,13 +81,13 @@ Blade directive for sidebar menu control.
 @endpermission
 ```
 
-## User log activity control:
+###### User log activity control:
 To track the record of user activity using the below code in every action method in your controller.
 
 ```shell
 \LogActivity::addToLog('user action');
 ```
 
-## License
+###### License
 
 The QuickAdmin is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

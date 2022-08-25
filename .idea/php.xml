@@ -125,6 +125,7 @@
       <path value="$PROJECT_DIR$/vendor/haruncpi/laravel-log-reader" />
       <path value="$PROJECT_DIR$/vendor/anhskohbo/no-captcha" />
       <path value="$PROJECT_DIR$/vendor/scyllaly/hcaptcha" />
+      <path value="$PROJECT_DIR$/vendor/rap2hpoutre/laravel-log-viewer" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />

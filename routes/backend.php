@@ -34,6 +34,8 @@ Route::resource('/permissions', PermissionController::class);
 Route::resource('/modules', ModuleController::class);
 
 //Log activity
-Route::get('/logs', [LogActivityController::class, 'index'])->name('log_list');
-Route::get('/add_log', [LogActivityController::class, 'store'])->name('add_log');
+Route::get('/user-logs', [LogActivityController::class, 'index'])->name('log_list');
+Route::get('/add-log', [LogActivityController::class, 'store'])->name('add_log');
 Route::delete('/log-delete/{id}', [LogActivityController::class, 'delete'])->name('log_delete');
+
+Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
