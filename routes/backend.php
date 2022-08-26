@@ -10,9 +10,7 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\PermissionController;
 use App\Http\Controllers\Backend\BookController;
 use App\Http\Controllers\Backend\LogActivityController;
-
-
-
+use App\Http\Controllers\Backend\SettingController;
 
 Route::get('/dashboard', DashboardController::class)->name('dashboard');
 //Roles
@@ -38,4 +36,14 @@ Route::get('/user-logs', [LogActivityController::class, 'index'])->name('log_lis
 Route::get('/add-log', [LogActivityController::class, 'store'])->name('add_log');
 Route::delete('/log-delete/{id}', [LogActivityController::class, 'delete'])->name('log_delete');
 
-Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
+Route::group(['as'=>'settings.', 'prefix'=>'settings'], function(){
+    Route::get('general', [SettingController::class, 'general'])->name('general');
+    Route::put('general', [SettingController::class, 'generalUpdate'])->name('general.update');
+
+    Route::get('appearence', [SettingController::class, 'appearence'])->name('appearence');
+    Route::put('appearence', [SettingController::class, 'appearenceUpdate'])->name('appearence.update');
+
+    Route::get('mail', [SettingController::class, 'mail'])->name('mail');
+    Route::patch('mail', [SettingController::class, 'mailUpdate'])->name('mail.update');
+});
+

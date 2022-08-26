@@ -106,6 +106,13 @@
                             </a>
                         </li>
                         <?php endif; ?>
+                        <?php if (\Illuminate\Support\Facades\Blade::check('permission', 'setting-index')): ?>
+                        <li class="<?php echo e(Request::is('app/settings/general*') ? 'mm-active' : ''); ?>">
+                            <a href="<?php echo e(route('app.settings.general')); ?>" class="">
+                                <i class="metismenu-icon pe-7s-setting"></i>Settings
+                            </a>
+                        </li>
+                        <?php endif; ?>
                     </ul>
                 </li>
 

@@ -81,7 +81,8 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    <?php echo e(setting('name', 'QuickAdmin')); ?>
+
                 </div>
 
                 <div class="links">

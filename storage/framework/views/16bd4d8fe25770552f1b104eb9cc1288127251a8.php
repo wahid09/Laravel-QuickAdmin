@@ -10,7 +10,7 @@
     <meta http-equiv="Content-Security-Policy"
           content="script-src 'self' cdn.datatables.net cdnjs.cloudflare.com code.jquery.com stackpath.bootstrapcdn.com 'unsafe-inline';">
     <?php header('X-Frame-Options: DENY'); ?>
-    <title><?php echo e(config('app.name', 'Laravel')); ?></title>
+    <title><?php echo e(setting('site_title') ?? config('app.name', 'Laravel')); ?></title>
     <meta name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">

@@ -106,6 +106,13 @@
                             </a>
                         </li>
                         @endpermission
+                        @permission('setting-index')
+                        <li class="{{Request::is('app/settings/general*') ? 'mm-active' : ''}}">
+                            <a href="{{ route('app.settings.general') }}" class="">
+                                <i class="metismenu-icon pe-7s-setting"></i>Settings
+                            </a>
+                        </li>
+                        @endpermission
                     </ul>
                 </li>
 

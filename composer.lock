@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "0caf05f0bbc58df1f2ca5611d4c8d9c0",
-=======
-    "content-hash": "e39ccfee83b57444e899c5681cc9cbdb",
->>>>>>> 10983f5401275f7ade890c138a3dd6a536fd5d31
+    "content-hash": "92ff2bbb2cf4c536928515b5092dbf46",
     "packages": [
         {
             "name": "appslabke/lara-izitoast",
@@ -238,6 +234,75 @@
                 "source": "https://github.com/browner12/helpers/tree/v3.4.0"
             },
             "time": "2022-02-07T15:48:53+00:00"
+        },
+        {
+            "name": "cswni/laravel-env-set-command",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cswni/laravel-env-set-command.git",
+                "reference": "2fffa02eeba750967618e316d5aeaf4265dc38a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cswni/laravel-env-set-command/zipball/2fffa02eeba750967618e316d5aeaf4265dc38a9",
+                "reference": "2fffa02eeba750967618e316d5aeaf4265dc38a9",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^7.0|^8.0|^9.0",
+                "illuminate/support": "^7.0|^8.0|^9.0",
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.5|^8.0|^9.0",
+                "roave/security-advisories": "dev-master"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ImLiam\\EnvironmentSetCommand\\EnvironmentSetCommandServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ImLiam\\EnvironmentSetCommand\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Liam Hammett",
+                    "email": "liam@liamhammett.com",
+                    "homepage": "https://liamhammett.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Set a .env file variable from the command line",
+            "homepage": "https://github.com/imliam/laravel-env-set-command",
+            "keywords": [
+                "artisan",
+                "env",
+                "environment",
+                "imliam",
+                "laravel-env-set-command",
+                "variables"
+            ],
+            "support": {
+                "source": "https://github.com/cswni/laravel-env-set-command/tree/1.4.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/imliam",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-07-06T17:38:30+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -3206,65 +3271,6 @@
                 }
             ],
             "time": "2022-08-05T17:58:37+00:00"
-        },
-        {
-            "name": "rap2hpoutre/laravel-log-viewer",
-            "version": "v2.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/rap2hpoutre/laravel-log-viewer.git",
-                "reference": "52e7c703a1e83cdae450f406c7d8472332dfb34e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/rap2hpoutre/laravel-log-viewer/zipball/52e7c703a1e83cdae450f406c7d8472332dfb34e",
-                "reference": "52e7c703a1e83cdae450f406c7d8472332dfb34e",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "4.2.*|5.*|^6.0|^7.0|^8.0|^9.0",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "3.7.*|^7.0",
-                "phpunit/phpunit": "^7|^9.5.10"
-            },
-            "type": "laravel-package",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Rap2hpoutre\\LaravelLogViewer\\LaravelLogViewerServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Rap2hpoutre\\LaravelLogViewer\\": "src/"
-                },
-                "classmap": [
-                    "src/controllers"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "rap2hpoutre",
-                    "email": "raphaelht@gmail.com"
-                }
-            ],
-            "description": "A Laravel log reader",
-            "keywords": [
-                "laravel",
-                "log",
-                "log-reader",
-                "log-viewer",
-                "logging",
-                "lumen"
-            ],
-            "time": "2022-04-06T15:15:40+00:00"
         },
         {
             "name": "realrashid/sweet-alert",
