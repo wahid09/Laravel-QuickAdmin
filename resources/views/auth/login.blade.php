@@ -71,6 +71,7 @@
                         </p>
                         <a href="{{ route('login.provider', 'github') }}" class="btn btn-outline-secondary">Github</a>
                         <a href="{{ route('login.provider', 'google') }}" class="btn btn-outline-danger">Google</a>
+                        <a href="{{ route('login.provider', 'facebook') }}" class="btn btn-outline-primary">Facebook</a>
                     </div>
                 </div>
             </div>
