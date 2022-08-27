@@ -16,7 +16,7 @@ class CreateLogActivitiesTable extends Migration
         Schema::create('log_activities', function (Blueprint $table) {
             $table->id();
             $table->string('subject');
-            $table->string('url');
+            $table->text('url');
             $table->string('method');
             $table->string('ip');
             $table->string('agent')->nullable();

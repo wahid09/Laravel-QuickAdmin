@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Requests\Setting\UpdateMailSettingsRequest;
+use App\Http\Requests\Setting\UpdateSocialiteSettingsRequest;
 
 class SettingController extends Controller {
     public function general() {
@@ -96,6 +97,28 @@ class SettingController extends Controller {
         \LogActivity::addToLog( 'Mail settings update!.' );
         toast( 'Mail settings update.', 'success' );
         return redirect()->route( 'app.settings.mail' );
+    }
+
+    public function socialite(){
+        return view('backend.settings.socialite');
+    }
+    public function updateSocialiteSettings(UpdateSocialiteSettingsRequest $request){
+        Setting::updateSettings($request->validated());
+        // Update .env file
+        Artisan::call("env:set FACEBOOK_CLIENT_ID='". $request->facebook_client_id ."'");
+        Artisan::call("env:set FACEBOOK_CLIENT_SECRET='". $request->facebook_client_secret ."'");
+
+        Artisan::call("env:set GOOGLE_CLIENT_ID='". $request->google_client_id ."'");
+        Artisan::call("env:set GOOGLE_CLIENT_SECRET='". $request->google_client_secret ."'");
+
+        Artisan::call("env:set GITHUB_CLIENT_ID='". $request->github_client_id ."'");
+        Artisan::call("env:set GITHUB_CLIENT_SECRET='". $request->github_client_secret ."'");
+
+        notify()->success('Settings Successfully Updated.','Success');
+        return back();
+        \LogActivity::addToLog( 'Socialite settings update!.' );
+        toast( 'Settings Successfully Updated.', 'success' );
+        return redirect()->route( 'app.settings.socialite' );
     }
 
     private function deleteLogo( $path ) {

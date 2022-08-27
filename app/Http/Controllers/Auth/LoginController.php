@@ -82,7 +82,8 @@ class LoginController extends Controller
             }
             Auth::login($newUser);
         }
-        notify()->success('You have successfully logged in with '.ucfirst($provider).'!','Success');
+        \LogActivity::addToLog( $user->getName().' '.'logged in');
+        toast( 'You have successfully logged in with '.ucfirst($provider).'!', 'success' );
         return redirect($this->redirectPath());
     }
 }
