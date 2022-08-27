@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Laravel\Socialite\Facades\Socialite;
+use App\Models\Role;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -36,5 +40,49 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+    /**
+     * Redirect the user to the provider authentication page.
+     *
+     * @param $provider
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function redirectToProvider($provider)
+    {
+        return Socialite::driver($provider)->redirect();
+    }
+    /**
+     * Obtain the user information from provider.
+     *
+     * @param $provider
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function handleProviderCallback($provider)
+    {
+        //return $provider;
+        $user = Socialite::driver($provider)->user();
+        //dd($user);
+        // Find existing user.
+        $existingUser = User::whereEmail($user->getEmail())->first();
+
+        if ($existingUser)
+        {
+            Auth::login($existingUser);
+        } else {
+            // Create new user.
+            $newUser = User::create([
+                'role_id' => Role::where('slug','user')->first()->id,
+                'name' => $user->getName(),
+                'email' => $user->getEmail(),
+                'status' => true
+            ]);
+            // upload images
+            if ($user->getAvatar()) {
+                $newUser->addMediaFromUrl($user->getAvatar())->toMediaCollection('avatar');
+            }
+            Auth::login($newUser);
+        }
+        notify()->success('You have successfully logged in with '.ucfirst($provider).'!','Success');
+        return redirect($this->redirectPath());
     }
 }

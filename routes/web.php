@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,10 @@ Route::get('/', function () {
 
 Auth::routes();
 //Route::view('/dashboard', 'backend.dashboard');
+Route::group(['as' => 'login.', 'prefix' => 'login', 'namespace' => 'Auth'], function () {
+    Route::get('/{provider}', [LoginController::class, 'redirectToProvider'])->name('provider');
+    Route::get('/{provider}/callback', [LoginController::class, 'handleProviderCallback'])->name('callback');
+});
 
 //Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');

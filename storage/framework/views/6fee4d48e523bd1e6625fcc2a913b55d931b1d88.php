@@ -94,6 +94,12 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
                     </form>
+                    <div class="text-center mt-2">
+                        <p>
+                            <strong>Or sign in with</strong>
+                        </p>
+                        <a href="<?php echo e(route('login.provider', 'github')); ?>" class="btn btn-outline-secondary">Github</a>
+                    </div>
                 </div>
             </div>
         </div>
