@@ -99,6 +99,7 @@ unset($__errorArgs, $__bag); ?>
                             <strong>Or sign in with</strong>
                         </p>
                         <a href="<?php echo e(route('login.provider', 'github')); ?>" class="btn btn-outline-secondary">Github</a>
+                        <a href="<?php echo e(route('login.provider', 'google')); ?>" class="btn btn-outline-danger">Google</a>
                     </div>
                 </div>
             </div>
