@@ -1,10 +1,14 @@
 {
-    "name": "laravel/laravel",
+    "name": "wahid09/laravel-quick-admin",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Laravel QuickAdmin is a web-based starter kit to help to start a large application without thinking about authentication, authorization, and role-based permission.",
     "keywords": [
+        "admin panel",
+        "boilerplate",
         "framework",
-        "laravel"
+        "laravel",
+        "Role",
+        "permission"
     ],
     "license": "MIT",
     "require": {
