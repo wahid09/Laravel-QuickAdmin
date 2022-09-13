@@ -26,7 +26,7 @@
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
-                <?php echo e(config('app.name', 'Laravel')); ?>
+                <?php echo e(setting('site_title')); ?>
 
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
