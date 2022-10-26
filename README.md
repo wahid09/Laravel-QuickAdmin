@@ -14,7 +14,7 @@ QuickAdmin is accessible, powerful, and provides tools required for large, robus
 
 ###### Prerequisite
 
-- PHP >= 7.3
+- PHP >= 8.1
 
 # Getting Started
 
